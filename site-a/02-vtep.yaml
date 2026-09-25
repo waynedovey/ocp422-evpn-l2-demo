@@ -1,0 +1,8 @@
+apiVersion: k8s.ovn.org/v1
+kind: VTEP
+metadata:
+  name: sydney-vtep
+spec:
+  mode: Unmanaged
+  cidrs:
+    - 10.251.10.0/24

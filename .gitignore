@@ -1,0 +1,19 @@
+# Private credentials and connection state
+.site-contexts.env
+.site-contexts.env.tmp.*
+.env
+*.pem
+*.key
+id_rsa*
+id_ed25519*
+.kube/
+.ssh/
+# Cluster backups and generated VM manifests (rendered SSH public keys)
+backups/
+network-operator-backup-*.yaml
+site-*/rendered/
+output/
+.tmp/
+.DS_Store
+__pycache__/
+*.pyc

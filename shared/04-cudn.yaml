@@ -1,0 +1,22 @@
+apiVersion: k8s.ovn.org/v1
+kind: ClusterUserDefinedNetwork
+metadata:
+  name: sydney-l2-evpn
+  labels:
+    evpn-demo: sydney-l2
+spec:
+  namespaceSelector:
+    matchLabels:
+      evpn-demo: sydney-l2
+  network:
+    topology: Layer2
+    layer2:
+      role: Primary
+      subnets:
+        - 10.250.50.0/24
+    transport: EVPN
+    evpn:
+      vtep: sydney-vtep
+      macVRF:
+        vni: 5050
+        routeTarget: "65000:5050"

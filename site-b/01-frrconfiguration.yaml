@@ -1,0 +1,18 @@
+# Proven working OpenShift FRR-K8s BGP peer for this lab.
+apiVersion: frrk8s.metallb.io/v1beta1
+kind: FRRConfiguration
+metadata:
+  name: sydney-evpn-site-b
+  namespace: openshift-frr-k8s
+  labels:
+    evpn-demo: sydney-l2
+spec:
+  nodeSelector: {}
+  bgp:
+    routers:
+      - asn: 65002
+        neighbors:
+          - address: 10.10.10.1
+            asn: 65000
+            disableMP: false
+            dualStackAddressFamily: false

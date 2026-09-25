@@ -1,0 +1,56 @@
+# Template. scripts/02- and 03-deploy render __SSH_PUBLIC_KEY__ at runtime.
+# DHCP is intentional: in the proven lab these VMs received 10.250.50.3; verify actual IPs after recreation.
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  name: vm-site-a
+  namespace: evpn-demo
+spec:
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        app: vm-site-a
+    spec:
+      domain:
+        cpu:
+          cores: 1
+        memory:
+          guest: 1Gi
+        devices:
+          disks:
+            - name: rootdisk
+              disk:
+                bus: virtio
+            - name: cloudinit
+              disk:
+                bus: virtio
+          interfaces:
+            - name: primary-udn
+              binding:
+                name: l2bridge
+      networks:
+        - name: primary-udn
+          pod: {}
+      volumes:
+        - name: rootdisk
+          containerDisk:
+            image: quay.io/containerdisks/fedora:latest
+        - name: cloudinit
+          cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              users:
+                - name: demo
+                  groups: [wheel]
+                  sudo: ALL=(ALL) NOPASSWD:ALL
+                  shell: /bin/bash
+                  lock_passwd: true
+                  ssh_authorized_keys:
+                    - __SSH_PUBLIC_KEY__
+              ssh_pwauth: false
+            networkData: |
+              version: 2
+              ethernets:
+                enp1s0:
+                  dhcp4: true

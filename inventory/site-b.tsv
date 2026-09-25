@@ -1,0 +1,8 @@
+# node	underlay-IP (plan snapshot; discover live before fabric)	VTEP-IP
+control-plane-cluster-9r9gz-1	10.10.10.10	10.251.20.21
+control-plane-cluster-9r9gz-2	10.10.10.11	10.251.20.22
+control-plane-cluster-9r9gz-3	10.10.10.100	10.251.20.23
+worker-cluster-9r9gz-1	10.10.10.20	10.251.20.24
+worker-cluster-9r9gz-2	10.10.10.21	10.251.20.25
+worker-cluster-9r9gz-3	10.10.10.22	10.251.20.26
+worker-cluster-9r9gz-4	10.10.10.101	10.251.20.27

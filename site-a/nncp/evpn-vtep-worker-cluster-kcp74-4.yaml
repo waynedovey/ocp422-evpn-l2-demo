@@ -1,0 +1,22 @@
+# Fresh lab: one permanent dummy VTEP /32 on worker-cluster-kcp74-4.
+# Already-switched clusters: DO NOT recreate an existing NNCP; validate instead.
+apiVersion: nmstate.io/v1
+kind: NodeNetworkConfigurationPolicy
+metadata:
+  name: evpn-vtep-worker-cluster-kcp74-4
+spec:
+  nodeSelector:
+    kubernetes.io/hostname: worker-cluster-kcp74-4
+  desiredState:
+    interfaces:
+      - name: evpn-vtep0
+        type: dummy
+        state: up
+        ipv4:
+          enabled: true
+          address:
+            - ip: 10.251.10.17
+              prefix-length: 32
+          dhcp: false
+        ipv6:
+          enabled: false
