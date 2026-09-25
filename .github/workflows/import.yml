@@ -1,0 +1,35 @@
+name: Import verified EVPN lab source
+on:
+  push:
+    paths:
+      - .seed/payload.xz.b64
+permissions:
+  contents: write
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Extract and commit the verified lab source
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import base64, json, lzma, pathlib
+          payload = pathlib.Path('.seed/payload.xz.b64').read_text()
+          data = json.loads(lzma.decompress(base64.b64decode(payload)))
+          root = pathlib.Path.cwd()
+          for item in data['files']:
+              relative = pathlib.PurePosixPath(item['path'])
+              if relative.is_absolute() or '..' in relative.parts:
+                  raise ValueError('Unsafe path')
+              dest = root.joinpath(*relative.parts)
+              dest.parent.mkdir(parents=True, exist_ok=True)
+              dest.write_text(item['content'])
+          print(f"Imported {len(data['files'])} source files")
+          PY
+          rm -rf .seed .github/workflows/import.yml
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add -A
+          git commit -m "Publish verified two-site OpenShift 4.22 EVPN lab"
+          git push origin HEAD:main
