@@ -16,24 +16,9 @@ The reported guest IPs are **observed DHCP allocations**, not an IPAM guarantee 
 
 ## Topology
 
-```mermaid
-flowchart LR
- subgraph A[Site A - kcp74]
-   VMA[vm-site-a<br/>10.250.50.3] --- NA[worker-kcp74-2<br/>VTEP 10.251.10.15]
-   NA -.->|EVPN eBGP AS65001| BA[Bastion A<br/>10.10.10.1 / AS65000]
- end
- subgraph Transport[Lab inter-site transport]
-   TA[10.254.254.1 / tun7] <--> |Encrypted SSH Layer 3| TB[10.254.254.2 / tun7]
- end
- subgraph B[Site B - 9r9gz]
-   BB[Bastion B<br/>10.10.10.1 / AS65000] -. EVPN eBGP / AS65002 .- NB[worker-9r9gz-1<br/>VTEP 10.251.20.24]
-   NB --- VMB[vm-site-b<br/>10.250.50.4]
- end
- BA <-->|iBGP EVPN| BB
- BA --- TA
- TB --- BB
- NA ==>|VXLAN UDP/4789 via bastions and tun7| NB
-```
+![OpenShift 4.22 two-site BGP EVPN topology](docs/topology.svg)
+
+The topology is provided as a scalable vector diagram for clarity on desktop and mobile. Dashed lines represent the logical VXLAN overlay; the underlying traffic is routed through the bastions and the SSH TUN tunnel.
 
 The two sites legitimately reuse `10.10.10.0/24` for local node/bastion management. **Never** advertise or route that overlapping subnet through the inter-site tunnel. Only the distinct VTEP ranges cross it. The earlier `172.31.250.0/24` VTEP range was wrong because it overlapped the clusters' `172.31.0.0/16` service CIDR.
 
