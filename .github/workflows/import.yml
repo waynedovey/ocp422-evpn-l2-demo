@@ -1,8 +1,7 @@
 name: Import verified EVPN lab source
 on:
   push:
-    paths:
-      - .seed/payload.xz.b64
+    paths: ['.seed/READY']
 permissions:
   contents: write
 jobs:
@@ -10,22 +9,23 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Extract and commit the verified lab source
+      - name: Extract and commit source
         shell: bash
         run: |
           python3 - <<'PY'
-          import base64, json, lzma, pathlib
-          payload = pathlib.Path('.seed/payload.xz.b64').read_text()
-          data = json.loads(lzma.decompress(base64.b64decode(payload)))
-          root = pathlib.Path.cwd()
+          import base64,hashlib,json,lzma,pathlib
+          parts=sorted(pathlib.Path('.seed').glob('part*.txt'))
+          assert len(parts)==6, f'Expected 6 parts, got {len(parts)}'
+          encoded=''.join(p.read_text().strip() for p in parts)
+          assert hashlib.sha256(encoded.encode()).hexdigest()=='41813c4a5d37fd9e417054c9092105dd15a77a6059408cb6abc70666228a4c42'
+          data=json.loads(lzma.decompress(base64.b64decode(encoded)))
+          assert len(data['files'])==50
           for item in data['files']:
-              relative = pathlib.PurePosixPath(item['path'])
-              if relative.is_absolute() or '..' in relative.parts:
-                  raise ValueError('Unsafe path')
-              dest = root.joinpath(*relative.parts)
-              dest.parent.mkdir(parents=True, exist_ok=True)
+              path=pathlib.PurePosixPath(item['path'])
+              assert not path.is_absolute() and '..' not in path.parts
+              dest=pathlib.Path(*path.parts)
+              dest.parent.mkdir(parents=True,exist_ok=True)
               dest.write_text(item['content'])
-          print(f"Imported {len(data['files'])} source files")
           PY
           rm -rf .seed .github/workflows/import.yml
           git config user.name github-actions[bot]
