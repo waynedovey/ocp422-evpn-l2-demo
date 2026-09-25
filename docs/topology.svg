@@ -1,133 +1,139 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="915" viewBox="0 0 1600 915" role="img" aria-labelledby="title desc">
-<title id="title">OpenShift 4.22 Cross-Cluster EVPN L2 Lab Topology</title><desc id="desc">Site A cluster kcp74 and Site B cluster 9r9gz, seven OpenShift nodes each, a demonstration VM on each, local eBGP peering to FRR bastions, iBGP over an encrypted SSH TUN underlay, and a Layer 2 EVPN VXLAN overlay between the VTEPs.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" width="1680" height="960" viewBox="0 0 1680 960" role="img" aria-labelledby="title desc">
+<title id="title">OpenShift 4.22 Cross-Cluster EVPN L2 Lab Topology</title>
+<desc id="desc">Two OpenShift 4.22 clusters with seven nodes each. Site A VM at 10.250.50.3 and VTEP 10.251.10.15 communicates with Site B VM at 10.250.50.4 and VTEP 10.251.20.24 over EVPN VXLAN. Each cluster peers with its local FRR bastion using eBGP. The bastions peer using iBGP across encrypted SSH tun7.</desc>
 <defs>
-  <marker id="arrow" markerWidth="11" markerHeight="11" refX="9" refY="5.5" orient="auto"><path d="M0 0 11 5.5 0 11Z" fill="#245ac1"/></marker>
-  <marker id="arrowDash" markerWidth="11" markerHeight="11" refX="9" refY="5.5" orient="auto"><path d="M0 0 11 5.5 0 11Z" fill="#1476e3"/></marker>
-  <filter id="shadow" x="-8%" y="-15%" width="116%" height="140%"><feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#11213a" flood-opacity=".08"/></filter>
-  <linearGradient id="highlight" x1="0" x2="0" y1="0" y2="1"><stop stop-color="#fff"/><stop offset="1" stop-color="#fff1f1"/></linearGradient>
+<marker id="arrowBlue" markerWidth="11" markerHeight="11" refX="5" refY="5" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#0b66c3"/></marker>
+<filter id="softshadow" x="-5%" y="-10%" width="110%" height="130%"><feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#14243b" flood-opacity=".07"/></filter>
 </defs>
-<rect x="0" y="0" width="1600" height="915" rx="0" fill="#ffffff" stroke="#ffffff" stroke-width="0" />
-<text x="800" y="55" font-size="37" font-weight="800" fill="#152136" text-anchor="middle" >OpenShift 4.22 Cross-Cluster EVPN L2 Lab Topology</text>
-<text x="800" y="91" font-size="20" font-weight="400" fill="#586b82" text-anchor="middle" >Two OpenShift clusters connected with BGP EVPN over a routed inter-site transport</text>
-<rect x="28" y="125" width="744" height="615" rx="16" fill="#fff" stroke="#ef6670" stroke-width="1.4" filter="url(#shadow)"/>
-<path d="M44 125h712q16 0 16 16v46h-744v-46q0-16 16-16Z" fill="#dd1b29"/>
-<text x="400" y="163" font-size="27" font-weight="750" fill="#fff" text-anchor="middle" >Site A — Sydney Cluster kcp74</text>
-<g transform="translate(83,222)"><circle r="24" fill="none" stroke="#e31320" stroke-width="10" stroke-dasharray="90 17 18 26" transform="rotate(-29)"/><path d="M 23 -8 L 35 -15 M -28 9 L -17 3" stroke="#e31320" stroke-width="6" stroke-linecap="round"/></g>
-<text x="127" y="230" font-size="25" font-weight="700" fill="#18283f" text-anchor="start" >OpenShift 4.22 cluster</text>
-<rect x="56" y="264" width="217" height="208" rx="12" fill="#fbfdff" stroke="#d1dded" stroke-width="1.5" />
-<text x="72" y="292" font-size="18" font-weight="700" fill="#18283f" text-anchor="start" >3 control plane nodes</text>
-<rect x="82" y="315" width="58" height="26" rx="5" fill="#324861" stroke="#324861" stroke-width="0" />
-<circle cx="96" cy="328" r="2.3" fill="#e9f3ff"/><circle cx="105" cy="328" r="2.3" fill="#e9f3ff"/>
-<rect x="159" y="315" width="58" height="26" rx="5" fill="#324861" stroke="#324861" stroke-width="0" />
-<circle cx="173" cy="328" r="2.3" fill="#e9f3ff"/><circle cx="182" cy="328" r="2.3" fill="#e9f3ff"/>
-<rect x="82" y="354" width="58" height="26" rx="5" fill="#324861" stroke="#324861" stroke-width="0" />
-<circle cx="96" cy="367" r="2.3" fill="#e9f3ff"/><circle cx="105" cy="367" r="2.3" fill="#e9f3ff"/>
-<rect x="159" y="354" width="58" height="26" rx="5" fill="#324861" stroke="#324861" stroke-width="0" />
-<circle cx="173" cy="367" r="2.3" fill="#e9f3ff"/><circle cx="182" cy="367" r="2.3" fill="#e9f3ff"/>
-<rect x="82" y="393" width="58" height="26" rx="5" fill="#324861" stroke="#324861" stroke-width="0" />
-<circle cx="96" cy="406" r="2.3" fill="#e9f3ff"/><circle cx="105" cy="406" r="2.3" fill="#e9f3ff"/>
-<rect x="159" y="393" width="58" height="26" rx="5" fill="#324861" stroke="#324861" stroke-width="0" />
-<circle cx="173" cy="406" r="2.3" fill="#e9f3ff"/><circle cx="182" cy="406" r="2.3" fill="#e9f3ff"/>
-<text x="238" y="373" font-size="30" font-weight="700" fill="#364b62" text-anchor="middle" >⋯</text>
-<rect x="289" y="264" width="455" height="208" rx="12" fill="#fbfdff" stroke="#d1dded" stroke-width="1.5" />
-<text x="305" y="292" font-size="18" font-weight="700" fill="#18283f" text-anchor="start" >4 worker nodes</text>
-<rect x="311" y="322" width="58" height="26" rx="5" fill="#324861" stroke="#324861" stroke-width="0" />
-<circle cx="325" cy="335" r="2.3" fill="#e9f3ff"/><circle cx="334" cy="335" r="2.3" fill="#e9f3ff"/>
-<rect x="311" y="359" width="58" height="26" rx="5" fill="#324861" stroke="#324861" stroke-width="0" />
-<circle cx="325" cy="372" r="2.3" fill="#e9f3ff"/><circle cx="334" cy="372" r="2.3" fill="#e9f3ff"/>
-<rect x="311" y="396" width="58" height="26" rx="5" fill="#324861" stroke="#324861" stroke-width="0" />
-<circle cx="325" cy="409" r="2.3" fill="#e9f3ff"/><circle cx="334" cy="409" r="2.3" fill="#e9f3ff"/>
-<text x="404" y="374" font-size="28" font-weight="700" fill="#18283f" text-anchor="start" >⋯</text>
-<rect x="497" y="300" width="235" height="158" rx="10" fill="url(#highlight)" stroke="#eb4e5c" stroke-width="1.8" />
-<text x="614" y="324" font-size="17" font-weight="750" fill="#19253a" text-anchor="middle" >worker-cluster-kcp74-2</text>
-<rect x="513" y="337" width="203" height="68" rx="9" fill="#f2f8ff" stroke="#8ec5fa" stroke-width="1.2" />
-<g transform="translate(543,370)"><path d="M0-21 21-11 0 1-21-11Z" fill="#63b6ff"/><path d="M-21-8 0 4 0 27-21 15Z" fill="#0875df"/><path d="M21-8 0 4 0 27 21 15Z" fill="#1657ad"/><path d="M-21-11 0 1 21-11" fill="none" stroke="#eaf5ff" stroke-width="2"/></g>
-<text x="626" y="364" font-size="18" font-weight="700" fill="#1e4789" text-anchor="middle" >vm-site-a</text>
-<text x="626" y="389" font-size="19" font-weight="450" fill="#18283f" text-anchor="middle" >10.250.50.3</text>
-<rect x="526" y="414" width="177" height="30" rx="6" fill="#fff0f2" stroke="#ffb3bb" stroke-width="1" />
-<text x="614" y="436" font-size="17" font-weight="700" fill="#ac1422" text-anchor="middle" >VTEP 10.251.10.15</text>
-<rect x="155" y="570" width="422" height="136" rx="12" fill="#f8fafc" stroke="#73839b" stroke-width="1.5" />
-<g transform="translate(206,626)"><path d="M-29 8c6-4 11-14 14-28 4-7 13-5 19-2 6 4 15-3 21 6 3 7-1 14-3 22 11 1 22 4 26 12-6 9-22 14-45 14-22 0-38-6-47-17 4-4 9-6 15-7z" fill="#e31320"/><path d="M-27 7c15 13 40 17 66 8" stroke="#aa1020" stroke-width="6" stroke-linecap="round" fill="none"/></g>
-<text x="254" y="601" font-size="21" font-weight="750" fill="#18283f" text-anchor="start" >Bastion A (RHEL 9 + FRR)</text>
-<text x="254" y="627" font-size="18" font-weight="500" fill="#18283f" text-anchor="start" >eth1: 10.10.10.1</text>
-<text x="254" y="651" font-size="18" font-weight="500" fill="#18283f" text-anchor="start" >tun7: 10.254.254.1</text>
-<text x="254" y="675" font-size="18" font-weight="700" fill="#18283f" text-anchor="start" >AS 65000</text>
-<path d="M 354 476 v 83" fill="none" stroke="#245ac1" stroke-width="3" marker-end="url(#arrow)"/>
-<text x="371" y="503" font-size="18" font-weight="700" fill="#245ac1" text-anchor="start" >Local eBGP EVPN</text>
-<text x="371" y="527" font-size="17" font-weight="500" fill="#526b8e" text-anchor="start" >Cluster AS 65001</text>
-<rect x="828" y="125" width="744" height="615" rx="16" fill="#fff" stroke="#ef6670" stroke-width="1.4" filter="url(#shadow)"/>
-<path d="M844 125h712q16 0 16 16v46h-744v-46q0-16 16-16Z" fill="#dd1b29"/>
-<text x="1200" y="163" font-size="27" font-weight="750" fill="#fff" text-anchor="middle" >Site B — Sydney Cluster 9r9gz</text>
-<g transform="translate(883,222)"><circle r="24" fill="none" stroke="#e31320" stroke-width="10" stroke-dasharray="90 17 18 26" transform="rotate(-29)"/><path d="M 23 -8 L 35 -15 M -28 9 L -17 3" stroke="#e31320" stroke-width="6" stroke-linecap="round"/></g>
-<text x="927" y="230" font-size="25" font-weight="700" fill="#18283f" text-anchor="start" >OpenShift 4.22 cluster</text>
-<rect x="856" y="264" width="217" height="208" rx="12" fill="#fbfdff" stroke="#d1dded" stroke-width="1.5" />
-<text x="872" y="292" font-size="18" font-weight="700" fill="#18283f" text-anchor="start" >3 control plane nodes</text>
-<rect x="882" y="315" width="58" height="26" rx="5" fill="#324861" stroke="#324861" stroke-width="0" />
-<circle cx="896" cy="328" r="2.3" fill="#e9f3ff"/><circle cx="905" cy="328" r="2.3" fill="#e9f3ff"/>
-<rect x="959" y="315" width="58" height="26" rx="5" fill="#324861" stroke="#324861" stroke-width="0" />
-<circle cx="973" cy="328" r="2.3" fill="#e9f3ff"/><circle cx="982" cy="328" r="2.3" fill="#e9f3ff"/>
-<rect x="882" y="354" width="58" height="26" rx="5" fill="#324861" stroke="#324861" stroke-width="0" />
-<circle cx="896" cy="367" r="2.3" fill="#e9f3ff"/><circle cx="905" cy="367" r="2.3" fill="#e9f3ff"/>
-<rect x="959" y="354" width="58" height="26" rx="5" fill="#324861" stroke="#324861" stroke-width="0" />
-<circle cx="973" cy="367" r="2.3" fill="#e9f3ff"/><circle cx="982" cy="367" r="2.3" fill="#e9f3ff"/>
-<rect x="882" y="393" width="58" height="26" rx="5" fill="#324861" stroke="#324861" stroke-width="0" />
-<circle cx="896" cy="406" r="2.3" fill="#e9f3ff"/><circle cx="905" cy="406" r="2.3" fill="#e9f3ff"/>
-<rect x="959" y="393" width="58" height="26" rx="5" fill="#324861" stroke="#324861" stroke-width="0" />
-<circle cx="973" cy="406" r="2.3" fill="#e9f3ff"/><circle cx="982" cy="406" r="2.3" fill="#e9f3ff"/>
-<text x="1038" y="373" font-size="30" font-weight="700" fill="#364b62" text-anchor="middle" >⋯</text>
-<rect x="1089" y="264" width="455" height="208" rx="12" fill="#fbfdff" stroke="#d1dded" stroke-width="1.5" />
-<text x="1105" y="292" font-size="18" font-weight="700" fill="#18283f" text-anchor="start" >4 worker nodes</text>
-<rect x="1389" y="322" width="58" height="26" rx="5" fill="#324861" stroke="#324861" stroke-width="0" />
-<circle cx="1403" cy="335" r="2.3" fill="#e9f3ff"/><circle cx="1412" cy="335" r="2.3" fill="#e9f3ff"/>
-<rect x="1389" y="359" width="58" height="26" rx="5" fill="#324861" stroke="#324861" stroke-width="0" />
-<circle cx="1403" cy="372" r="2.3" fill="#e9f3ff"/><circle cx="1412" cy="372" r="2.3" fill="#e9f3ff"/>
-<rect x="1389" y="396" width="58" height="26" rx="5" fill="#324861" stroke="#324861" stroke-width="0" />
-<circle cx="1403" cy="409" r="2.3" fill="#e9f3ff"/><circle cx="1412" cy="409" r="2.3" fill="#e9f3ff"/>
-<text x="1486" y="374" font-size="28" font-weight="700" fill="#18283f" text-anchor="start" >⋯</text>
-<rect x="1102" y="300" width="235" height="158" rx="10" fill="url(#highlight)" stroke="#eb4e5c" stroke-width="1.8" />
-<text x="1219" y="324" font-size="17" font-weight="750" fill="#19253a" text-anchor="middle" >worker-cluster-9r9gz-1</text>
-<rect x="1118" y="337" width="203" height="68" rx="9" fill="#f2f8ff" stroke="#8ec5fa" stroke-width="1.2" />
-<g transform="translate(1148,370)"><path d="M0-21 21-11 0 1-21-11Z" fill="#63b6ff"/><path d="M-21-8 0 4 0 27-21 15Z" fill="#0875df"/><path d="M21-8 0 4 0 27 21 15Z" fill="#1657ad"/><path d="M-21-11 0 1 21-11" fill="none" stroke="#eaf5ff" stroke-width="2"/></g>
-<text x="1231" y="364" font-size="18" font-weight="700" fill="#1e4789" text-anchor="middle" >vm-site-b</text>
-<text x="1231" y="389" font-size="19" font-weight="450" fill="#18283f" text-anchor="middle" >10.250.50.4</text>
-<rect x="1131" y="414" width="177" height="30" rx="6" fill="#fff0f2" stroke="#ffb3bb" stroke-width="1" />
-<text x="1219" y="436" font-size="17" font-weight="700" fill="#ac1422" text-anchor="middle" >VTEP 10.251.20.24</text>
-<rect x="1022" y="570" width="422" height="136" rx="12" fill="#f8fafc" stroke="#73839b" stroke-width="1.5" />
-<g transform="translate(1073,626)"><path d="M-29 8c6-4 11-14 14-28 4-7 13-5 19-2 6 4 15-3 21 6 3 7-1 14-3 22 11 1 22 4 26 12-6 9-22 14-45 14-22 0-38-6-47-17 4-4 9-6 15-7z" fill="#e31320"/><path d="M-27 7c15 13 40 17 66 8" stroke="#aa1020" stroke-width="6" stroke-linecap="round" fill="none"/></g>
-<text x="1121" y="601" font-size="21" font-weight="750" fill="#18283f" text-anchor="start" >Bastion B (RHEL 9 + FRR)</text>
-<text x="1121" y="627" font-size="18" font-weight="500" fill="#18283f" text-anchor="start" >eth1: 10.10.10.1</text>
-<text x="1121" y="651" font-size="18" font-weight="500" fill="#18283f" text-anchor="start" >tun7: 10.254.254.2</text>
-<text x="1121" y="675" font-size="18" font-weight="700" fill="#18283f" text-anchor="start" >AS 65000</text>
-<path d="M 1248 476 v 83" fill="none" stroke="#245ac1" stroke-width="3" marker-end="url(#arrow)"/>
-<text x="1265" y="503" font-size="18" font-weight="700" fill="#245ac1" text-anchor="start" >Local eBGP EVPN</text>
-<text x="1265" y="527" font-size="17" font-weight="500" fill="#526b8e" text-anchor="start" >Cluster AS 65002</text>
-<path d="M732 392h22v111h343V392h5" fill="none" stroke="#1476e3" stroke-width="4" stroke-dasharray="11 8" marker-start="url(#arrowDash)" marker-end="url(#arrowDash)"/>
-<rect x="666" y="477" width="268" height="34" rx="6" fill="#ffffff" stroke="#ffffff" stroke-width="0" />
-<text x="800" y="501" font-size="20" font-weight="750" fill="#0867cf" text-anchor="middle" >VXLAN / EVPN data plane</text>
-<path d="M580 625h439" stroke="#245ac1" stroke-width="3.5" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
-<rect x="644" y="577" width="312" height="40" rx="5" fill="#ffffff" stroke="#ffffff" stroke-width="0" />
-<text x="800" y="595" font-size="19" font-weight="750" fill="#172f5e" text-anchor="middle" >iBGP EVPN between bastions</text>
-<text x="800" y="614" font-size="17" font-weight="550" fill="#4f6483" text-anchor="middle" >AS 65000</text>
-<path d="M580 683h79 M942 683h77" fill="none" stroke="#245ac1" stroke-width="3" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
-<rect x="655" y="652" width="290" height="71" rx="33" fill="#f0f7ff" stroke="#86b9ef" stroke-width="2" />
-<text x="800" y="680" font-size="17" font-weight="750" fill="#1b3760" text-anchor="middle" >Encrypted SSH TUN underlay</text>
-<text x="800" y="705" font-size="17" font-weight="500" fill="#38577e" text-anchor="middle" >10.254.254.1 ↔ 10.254.254.2</text>
-<rect x="31" y="769" width="1213" height="113" rx="12" fill="#fff" stroke="#c9d5e6" stroke-width="1.6" />
-<path d="M284 788v76 M440 788v76 M675 788v76" stroke="#cad5e6" stroke-width="2"/>
-<text x="55" y="804" font-size="18" font-weight="700" fill="#26364d" text-anchor="start" >CUDN</text>
-<text x="55" y="843" font-size="22" font-weight="750" fill="#1666ba" text-anchor="start" >sydney-l2-evpn</text>
-<text x="315" y="804" font-size="18" font-weight="700" fill="#26364d" text-anchor="start" >VNI</text>
-<text x="315" y="843" font-size="24" font-weight="750" fill="#1666ba" text-anchor="start" >5050</text>
-<text x="470" y="804" font-size="18" font-weight="700" fill="#26364d" text-anchor="start" >Route target</text>
-<text x="470" y="843" font-size="23" font-weight="750" fill="#1666ba" text-anchor="start" >65000:5050</text>
-<circle cx="721" cy="824" r="25" fill="#20a64b"/><path d="m709 823 9 9 17-21" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-<text x="761" y="804" font-size="18" font-weight="700" fill="#26364d" text-anchor="start" >Verified VM-to-VM Layer 2</text>
-<text x="761" y="841" font-size="21" font-weight="750" fill="#1666ba" text-anchor="start" >10.250.50.3  →  10.250.50.4</text>
-<rect x="1266" y="769" width="305" height="113" rx="12" fill="#fff" stroke="#c9d5e6" stroke-width="1.6" />
-<text x="1287" y="798" font-size="18" font-weight="750" fill="#18283f" text-anchor="start" >Legend</text>
-<path d="M1288 820h66" stroke="#245ac1" stroke-width="3" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
-<text x="1372" y="827" font-size="17" font-weight="550" fill="#18283f" text-anchor="start" >BGP / routing</text>
-<path d="M1288 855h66" stroke="#1476e3" stroke-dasharray="9 6" stroke-width="3" marker-start="url(#arrowDash)" marker-end="url(#arrowDash)"/>
-<text x="1372" y="862" font-size="17" font-weight="550" fill="#18283f" text-anchor="start" >VXLAN overlay</text>
-<text x="800" y="901" font-size="15" font-weight="450" fill="#6d7d93" text-anchor="middle" >Lab demonstration • The VXLAN overlay follows the routed bastion-to-bastion SSH underlay; it is not a direct physical link.</text>
+<rect x="0" y="0" width="1680" height="960" rx="0" fill="#fff" stroke="none" stroke-width="1" />
+<text x="840" y="58" font-family="Arial,Helvetica,sans-serif" font-size="39" font-weight="700" fill="#132138" text-anchor="middle">OpenShift 4.22 Cross-Cluster EVPN L2 Lab Topology</text>
+<text x="840" y="94" font-family="Arial,Helvetica,sans-serif" font-size="21" font-weight="400" fill="#536780" text-anchor="middle">Two OpenShift clusters connected using BGP EVPN over routed inter-site transport</text>
+<rect x="30" y="124" width="780" height="625" rx="15" fill="#fff" stroke="#f59aa3" stroke-width="1.6" filter="url(#softshadow)"/>
+<rect x="30" y="124" width="780" height="63" rx="15" fill="#e51e32" stroke="none" stroke-width="0" />
+<rect x="30" y="161" width="780" height="26" rx="0" fill="#e51e32" stroke="none" stroke-width="1" />
+<text x="420" y="165" font-family="Arial,Helvetica,sans-serif" font-size="27" font-weight="700" fill="#fff" text-anchor="middle">Site A — Sydney Cluster kcp74</text>
+<circle cx="85" cy="229" r="21" fill="none" stroke="#e21b2d" stroke-width="9" stroke-dasharray="93 39" transform="rotate(-22 85 229)"/>
+<path d="M 99 208 L 111 203" stroke="#e21b2d" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+<text x="126" y="238" font-family="Arial,Helvetica,sans-serif" font-size="26" font-weight="700" fill="#1b293e" text-anchor="start">OpenShift 4.22 cluster</text>
+<rect x="55" y="275" width="228" height="210" rx="12" fill="#fcfdff" stroke="#cbdbee" stroke-width="1.5" />
+<rect x="300" y="275" width="485" height="210" rx="12" fill="#fcfdff" stroke="#cbdbee" stroke-width="1.5" />
+<text x="72" y="307" font-family="Arial,Helvetica,sans-serif" font-size="18" font-weight="700" fill="#223551" text-anchor="start">3 control plane nodes</text>
+<text x="318" y="307" font-family="Arial,Helvetica,sans-serif" font-size="18" font-weight="700" fill="#223551" text-anchor="start">4 worker nodes</text>
+<rect x="73" y="326" width="62" height="28" rx="5" fill="#35485e" stroke="#35485e" stroke-width="1" />
+<circle cx="85" cy="340" r="3" fill="#eef5ff"/><circle cx="96" cy="340" r="2.2" fill="#eef5ff"/>
+<rect x="146" y="326" width="62" height="28" rx="5" fill="#35485e" stroke="#35485e" stroke-width="1" />
+<circle cx="158" cy="340" r="3" fill="#eef5ff"/><circle cx="169" cy="340" r="2.2" fill="#eef5ff"/>
+<rect x="319" y="326" width="62" height="28" rx="5" fill="#35485e" stroke="#35485e" stroke-width="1" />
+<circle cx="331" cy="340" r="3" fill="#eef5ff"/><circle cx="342" cy="340" r="2.2" fill="#eef5ff"/>
+<rect x="73" y="364" width="62" height="28" rx="5" fill="#35485e" stroke="#35485e" stroke-width="1" />
+<circle cx="85" cy="378" r="3" fill="#eef5ff"/><circle cx="96" cy="378" r="2.2" fill="#eef5ff"/>
+<rect x="146" y="364" width="62" height="28" rx="5" fill="#35485e" stroke="#35485e" stroke-width="1" />
+<circle cx="158" cy="378" r="3" fill="#eef5ff"/><circle cx="169" cy="378" r="2.2" fill="#eef5ff"/>
+<rect x="319" y="364" width="62" height="28" rx="5" fill="#35485e" stroke="#35485e" stroke-width="1" />
+<circle cx="331" cy="378" r="3" fill="#eef5ff"/><circle cx="342" cy="378" r="2.2" fill="#eef5ff"/>
+<rect x="73" y="402" width="62" height="28" rx="5" fill="#35485e" stroke="#35485e" stroke-width="1" />
+<circle cx="85" cy="416" r="3" fill="#eef5ff"/><circle cx="96" cy="416" r="2.2" fill="#eef5ff"/>
+<rect x="146" y="402" width="62" height="28" rx="5" fill="#35485e" stroke="#35485e" stroke-width="1" />
+<circle cx="158" cy="416" r="3" fill="#eef5ff"/><circle cx="169" cy="416" r="2.2" fill="#eef5ff"/>
+<rect x="319" y="402" width="62" height="28" rx="5" fill="#35485e" stroke="#35485e" stroke-width="1" />
+<circle cx="331" cy="416" r="3" fill="#eef5ff"/><circle cx="342" cy="416" r="2.2" fill="#eef5ff"/>
+<text x="228" y="385" font-family="Arial,Helvetica,sans-serif" font-size="28" font-weight="700" fill="#35485e" text-anchor="middle">···</text>
+<text x="432" y="385" font-family="Arial,Helvetica,sans-serif" font-size="28" font-weight="700" fill="#35485e" text-anchor="middle">···</text>
+<rect x="870" y="124" width="780" height="625" rx="15" fill="#fff" stroke="#f59aa3" stroke-width="1.6" filter="url(#softshadow)"/>
+<rect x="870" y="124" width="780" height="63" rx="15" fill="#e51e32" stroke="none" stroke-width="0" />
+<rect x="870" y="161" width="780" height="26" rx="0" fill="#e51e32" stroke="none" stroke-width="1" />
+<text x="1260" y="165" font-family="Arial,Helvetica,sans-serif" font-size="27" font-weight="700" fill="#fff" text-anchor="middle">Site B — Sydney Cluster 9r9gz</text>
+<circle cx="925" cy="229" r="21" fill="none" stroke="#e21b2d" stroke-width="9" stroke-dasharray="93 39" transform="rotate(-22 925 229)"/>
+<path d="M 939 208 L 951 203" stroke="#e21b2d" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+<text x="966" y="238" font-family="Arial,Helvetica,sans-serif" font-size="26" font-weight="700" fill="#1b293e" text-anchor="start">OpenShift 4.22 cluster</text>
+<rect x="895" y="275" width="228" height="210" rx="12" fill="#fcfdff" stroke="#cbdbee" stroke-width="1.5" />
+<rect x="1140" y="275" width="485" height="210" rx="12" fill="#fcfdff" stroke="#cbdbee" stroke-width="1.5" />
+<text x="912" y="307" font-family="Arial,Helvetica,sans-serif" font-size="18" font-weight="700" fill="#223551" text-anchor="start">3 control plane nodes</text>
+<text x="1158" y="307" font-family="Arial,Helvetica,sans-serif" font-size="18" font-weight="700" fill="#223551" text-anchor="start">4 worker nodes</text>
+<rect x="913" y="326" width="62" height="28" rx="5" fill="#35485e" stroke="#35485e" stroke-width="1" />
+<circle cx="925" cy="340" r="3" fill="#eef5ff"/><circle cx="936" cy="340" r="2.2" fill="#eef5ff"/>
+<rect x="986" y="326" width="62" height="28" rx="5" fill="#35485e" stroke="#35485e" stroke-width="1" />
+<circle cx="998" cy="340" r="3" fill="#eef5ff"/><circle cx="1009" cy="340" r="2.2" fill="#eef5ff"/>
+<rect x="1159" y="326" width="62" height="28" rx="5" fill="#35485e" stroke="#35485e" stroke-width="1" />
+<circle cx="1171" cy="340" r="3" fill="#eef5ff"/><circle cx="1182" cy="340" r="2.2" fill="#eef5ff"/>
+<rect x="913" y="364" width="62" height="28" rx="5" fill="#35485e" stroke="#35485e" stroke-width="1" />
+<circle cx="925" cy="378" r="3" fill="#eef5ff"/><circle cx="936" cy="378" r="2.2" fill="#eef5ff"/>
+<rect x="986" y="364" width="62" height="28" rx="5" fill="#35485e" stroke="#35485e" stroke-width="1" />
+<circle cx="998" cy="378" r="3" fill="#eef5ff"/><circle cx="1009" cy="378" r="2.2" fill="#eef5ff"/>
+<rect x="1159" y="364" width="62" height="28" rx="5" fill="#35485e" stroke="#35485e" stroke-width="1" />
+<circle cx="1171" cy="378" r="3" fill="#eef5ff"/><circle cx="1182" cy="378" r="2.2" fill="#eef5ff"/>
+<rect x="913" y="402" width="62" height="28" rx="5" fill="#35485e" stroke="#35485e" stroke-width="1" />
+<circle cx="925" cy="416" r="3" fill="#eef5ff"/><circle cx="936" cy="416" r="2.2" fill="#eef5ff"/>
+<rect x="986" y="402" width="62" height="28" rx="5" fill="#35485e" stroke="#35485e" stroke-width="1" />
+<circle cx="998" cy="416" r="3" fill="#eef5ff"/><circle cx="1009" cy="416" r="2.2" fill="#eef5ff"/>
+<rect x="1159" y="402" width="62" height="28" rx="5" fill="#35485e" stroke="#35485e" stroke-width="1" />
+<circle cx="1171" cy="416" r="3" fill="#eef5ff"/><circle cx="1182" cy="416" r="2.2" fill="#eef5ff"/>
+<text x="1068" y="385" font-family="Arial,Helvetica,sans-serif" font-size="28" font-weight="700" fill="#35485e" text-anchor="middle">···</text>
+<text x="1272" y="385" font-family="Arial,Helvetica,sans-serif" font-size="28" font-weight="700" fill="#35485e" text-anchor="middle">···</text>
+<rect x="535" y="296" width="253" height="168" rx="12" fill="#fff9fa" stroke="#ee5b67" stroke-width="1.8" />
+<text x="661.5" y="323" font-family="Arial,Helvetica,sans-serif" font-size="17.6" font-weight="700" fill="#25334a" text-anchor="middle">worker-cluster-kcp74-2</text>
+<rect x="548" y="337" width="227" height="67" rx="10" fill="#f2f9ff" stroke="#9cc8ff" stroke-width="1.4" />
+<path d="M 577 351 l 24 12 -24 13 -24 -13 Z" fill="#50b6ff"/><path d="M 553 363 l 24 13 v 30 l -24 -14 Z" fill="#1979d9"/><path d="M 601 363 l -24 13 v 30 l 24 -14 Z" fill="#075ab5"/>
+<text x="680" y="365" font-family="Arial,Helvetica,sans-serif" font-size="20" font-weight="700" fill="#0c56af" text-anchor="middle">vm-site-a</text>
+<text x="680" y="389" font-family="Arial,Helvetica,sans-serif" font-size="18" font-weight="400" fill="#263954" text-anchor="middle">10.250.50.3</text>
+<rect x="560" y="415" width="203" height="35" rx="8" fill="#fff4f6" stroke="#ffafb8" stroke-width="1.2" />
+<text x="661.5" y="439" font-family="Arial,Helvetica,sans-serif" font-size="17.8" font-weight="700" fill="#cc1029" text-anchor="middle">VTEP 10.251.10.15</text>
+<rect x="1375" y="296" width="253" height="168" rx="12" fill="#fff9fa" stroke="#ee5b67" stroke-width="1.8" />
+<text x="1501.5" y="323" font-family="Arial,Helvetica,sans-serif" font-size="17.6" font-weight="700" fill="#25334a" text-anchor="middle">worker-cluster-9r9gz-1</text>
+<rect x="1388" y="337" width="227" height="67" rx="10" fill="#f2f9ff" stroke="#9cc8ff" stroke-width="1.4" />
+<path d="M 1417 351 l 24 12 -24 13 -24 -13 Z" fill="#50b6ff"/><path d="M 1393 363 l 24 13 v 30 l -24 -14 Z" fill="#1979d9"/><path d="M 1441 363 l -24 13 v 30 l 24 -14 Z" fill="#075ab5"/>
+<text x="1520" y="365" font-family="Arial,Helvetica,sans-serif" font-size="20" font-weight="700" fill="#0c56af" text-anchor="middle">vm-site-b</text>
+<text x="1520" y="389" font-family="Arial,Helvetica,sans-serif" font-size="18" font-weight="400" fill="#263954" text-anchor="middle">10.250.50.4</text>
+<rect x="1400" y="415" width="203" height="35" rx="8" fill="#fff4f6" stroke="#ffafb8" stroke-width="1.2" />
+<text x="1501.5" y="439" font-family="Arial,Helvetica,sans-serif" font-size="17.8" font-weight="700" fill="#cc1029" text-anchor="middle">VTEP 10.251.20.24</text>
+<path d="M 660 464 V 517 H 1500 V 464" stroke="#0b66c3" stroke-width="3.6" fill="none" stroke-linecap="round" stroke-linejoin="round" marker-start="url(#arrowBlue)" marker-end="url(#arrowBlue)" stroke-dasharray="12 9"/>
+<rect x="668" y="495" width="355" height="42" rx="20" fill="#fff" stroke="#a9cdf8" stroke-width="1.2" />
+<text x="845" y="522" font-family="Arial,Helvetica,sans-serif" font-size="20" font-weight="700" fill="#0c5baf" text-anchor="middle">VXLAN / EVPN data plane</text>
+<path d="M 374 485 V 565" stroke="#0b66c3" stroke-width="3.7" fill="none" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrowBlue)"/>
+<text x="393" y="542" font-family="Arial,Helvetica,sans-serif" font-size="19" font-weight="700" fill="#0c5baf" text-anchor="start">Local eBGP EVPN</text>
+<text x="393" y="566" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="400" fill="#4d6380" text-anchor="start">Cluster AS 65001</text>
+<path d="M 1583 485 V 564" stroke="#0b66c3" stroke-width="3.7" fill="none" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrowBlue)"/>
+<text x="1372" y="542" font-family="Arial,Helvetica,sans-serif" font-size="19" font-weight="700" fill="#0c5baf" text-anchor="start">Local eBGP EVPN</text>
+<text x="1372" y="566" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="400" fill="#4d6380" text-anchor="start">Cluster AS 65002</text>
+<rect x="85" y="583" width="530" height="145" rx="12" fill="#fff" stroke="#8197af" stroke-width="1.6" />
+<path d="M 123 651 C 125 643 130 630 134 616 Q 147 608 161 617 L 174 650 Q 190 654 193 661 C 179 683 112 682 104 663 C 111 656 116 654 123 651 Z" fill="#ee162c"/>
+<path d="M 122 652 Q 150 672 174 650" stroke="#b20a20" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+<text x="220" y="615" font-family="Arial,Helvetica,sans-serif" font-size="21" font-weight="700" fill="#1e3049" text-anchor="start">Bastion A (RHEL 9 + FRR)</text>
+<text x="220" y="647" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="400" fill="#374d67" text-anchor="start">eth1: 10.10.10.1</text>
+<text x="220" y="672" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="400" fill="#374d67" text-anchor="start">tun7: 10.254.254.1</text>
+<text x="220" y="699" font-family="Arial,Helvetica,sans-serif" font-size="18" font-weight="700" fill="#1c304d" text-anchor="start">AS 65000</text>
+<rect x="1060" y="583" width="530" height="145" rx="12" fill="#fff" stroke="#8197af" stroke-width="1.6" />
+<path d="M 1098 651 C 1100 643 1105 630 1109 616 Q 1122 608 1136 617 L 1149 650 Q 1165 654 1168 661 C 1154 683 1087 682 1079 663 C 1086 656 1091 654 1098 651 Z" fill="#ee162c"/>
+<path d="M 1097 652 Q 1125 672 1149 650" stroke="#b20a20" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+<text x="1195" y="615" font-family="Arial,Helvetica,sans-serif" font-size="21" font-weight="700" fill="#1e3049" text-anchor="start">Bastion B (RHEL 9 + FRR)</text>
+<text x="1195" y="647" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="400" fill="#374d67" text-anchor="start">eth1: 10.10.10.1</text>
+<text x="1195" y="672" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="400" fill="#374d67" text-anchor="start">tun7: 10.254.254.2</text>
+<text x="1195" y="699" font-family="Arial,Helvetica,sans-serif" font-size="18" font-weight="700" fill="#1c304d" text-anchor="start">AS 65000</text>
+<text x="840" y="581" font-family="Arial,Helvetica,sans-serif" font-size="19" font-weight="700" fill="#0d5aaf" text-anchor="middle">iBGP EVPN between bastions  ·  AS 65000</text>
+<path d="M 624 621 H 1049" stroke="#0b66c3" stroke-width="3.8" fill="none" stroke-linecap="round" stroke-linejoin="round" marker-start="url(#arrowBlue)" marker-end="url(#arrowBlue)"/>
+<path d="M 624 683 H 1049" stroke="#0b66c3" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round" marker-start="url(#arrowBlue)" marker-end="url(#arrowBlue)"/>
+<rect x="710" y="648" width="260" height="67" rx="33" fill="#f0f7ff" stroke="#84b9f9" stroke-width="1.5" />
+<text x="840" y="675" font-family="Arial,Helvetica,sans-serif" font-size="18" font-weight="700" fill="#23405f" text-anchor="middle">Encrypted SSH TUN</text>
+<text x="840" y="698" font-family="Arial,Helvetica,sans-serif" font-size="15.5" font-weight="400" fill="#3a5b7d" text-anchor="middle">10.254.254.1 ↔ 10.254.254.2</text>
+<rect x="30" y="773" width="1216" height="124" rx="12" fill="#fff" stroke="#c9d9ed" stroke-width="1.5" />
+<path d="M 289 793 V 877" stroke="#c8d5e5" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M 449 793 V 877" stroke="#c8d5e5" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M 683 793 V 877" stroke="#c8d5e5" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+<text x="52" y="810" font-family="Arial,Helvetica,sans-serif" font-size="18" font-weight="700" fill="#253852" text-anchor="start">CUDN</text>
+<text x="52" y="853" font-family="Arial,Helvetica,sans-serif" font-size="23" font-weight="700" fill="#0c5bb2" text-anchor="start">sydney-l2-evpn</text>
+<text x="320" y="810" font-family="Arial,Helvetica,sans-serif" font-size="18" font-weight="700" fill="#253852" text-anchor="start">VNI</text>
+<text x="320" y="853" font-family="Arial,Helvetica,sans-serif" font-size="25" font-weight="700" fill="#0c5bb2" text-anchor="start">5050</text>
+<text x="473" y="810" font-family="Arial,Helvetica,sans-serif" font-size="18" font-weight="700" fill="#253852" text-anchor="start">Route target</text>
+<text x="473" y="853" font-family="Arial,Helvetica,sans-serif" font-size="23" font-weight="700" fill="#0c5bb2" text-anchor="start">65000:5050</text>
+<circle cx="729" cy="835" r="27" fill="#16934b"/>
+<path d="M 715 835 l 10 10 20 -23" stroke="#fff" stroke-width="5.5" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+<text x="774" y="812" font-family="Arial,Helvetica,sans-serif" font-size="18" font-weight="700" fill="#253852" text-anchor="start">Verified VM-to-VM Layer 2</text>
+<text x="774" y="853" font-family="Arial,Helvetica,sans-serif" font-size="21.5" font-weight="700" fill="#0c5bb2" text-anchor="start">10.250.50.3 → 10.250.50.4</text>
+<rect x="1270" y="773" width="382" height="124" rx="12" fill="#fff" stroke="#c9d9ed" stroke-width="1.5" />
+<text x="1293" y="802" font-family="Arial,Helvetica,sans-serif" font-size="18" font-weight="700" fill="#253852" text-anchor="start">Legend</text>
+<path d="M 1307 830 H 1386" stroke="#0b66c3" stroke-width="3.2" fill="none" stroke-linecap="round" stroke-linejoin="round" marker-start="url(#arrowBlue)" marker-end="url(#arrowBlue)"/>
+<text x="1408" y="835" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="400" fill="#253852" text-anchor="start">BGP / routing</text>
+<path d="M 1307 865 H 1386" stroke="#0b66c3" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round" marker-start="url(#arrowBlue)" marker-end="url(#arrowBlue)" stroke-dasharray="12 9"/>
+<text x="1408" y="870" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="400" fill="#253852" text-anchor="start">VXLAN overlay</text>
+<text x="840" y="928" font-family="Arial,Helvetica,sans-serif" font-size="14" font-weight="400" fill="#66788f" text-anchor="middle">Lab demonstration: the VXLAN overlay follows the routed bastion-to-bastion SSH underlay; it is not a direct physical link.</text>
 </svg>
